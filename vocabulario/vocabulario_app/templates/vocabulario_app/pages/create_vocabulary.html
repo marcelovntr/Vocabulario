@@ -1,0 +1,28 @@
+{% extends "vocabulario_app/global/index.html" %}
+{% load static %}
+{% block title %}Word Anotation{% endblock title %}
+{% block content %}
+    <main id="container-words">
+        <h1>Vocabulary Creation</h1>
+        <form action="{% url 'create_vocabulary' %}" method="POST">
+            {% csrf_token %}
+            <label for="vocabulo" >Vocable</label>
+            <input type="text" name="vocabulo" placeholder="Insert word here">
+            <label for="significado">Meaning</label>
+            <input type="text" name="significado" placeholder="General meaning here">
+            <label for="exemplo">Example</label>
+            <input type="text" name="exemplo" placeholder="Use example here">
+            <label for="frequencia">Frequency</label>
+            <select name="frequencia">
+                <option value="" disabled selected>Select</option>
+                <option value="alta">High</option>
+                <option value="media">Medium</option>
+                <option value="baixa">Low</option>
+            </select>
+            <!-- {{ form.as_p }} -->
+            <button type="submit">Save</button>
+        </form>
+
+    </main>
+    
+{% endblock content %}

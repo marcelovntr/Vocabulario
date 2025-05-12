@@ -1,0 +1,19 @@
+{% extends "vocabulario_app/global/index.html" %}
+{% load static %}
+{% block title %}Word List{% endblock title %}
+
+{% block content %}
+    <main id="container-word-list">
+        <h1>Word List</h1>
+        {% for word in words%}
+        <ul>
+            <li>{{ word.vocabulo }} /#/ {{ word.significado }} /#/ {{ word.exemplo }} /#/ {{ word.frequencia }}
+                {% comment %} {% url 'atualizar_vocabulary' word.id %} {% endcomment %}
+                <a href="">Edit</a>
+                {% comment %} {% url 'deletar_vocabulary' word.id %} {% endcomment %}
+                <a href="">Delete</a>
+            </li>        
+        </ul>
+        {% endfor %}
+    </main>
+{% endblock content %}
