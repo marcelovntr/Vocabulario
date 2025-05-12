@@ -5,13 +5,14 @@
 {% block content %}
     <main id="container-word-list">
         <h1>Word List</h1>
+        <p>VOCABULO --- SIGNIFICADO --- EXEMPLO--- FREQUENCIA</p>
         {% for word in words%}
         <ul>
             <li>{{ word.vocabulo }} /#/ {{ word.significado }} /#/ {{ word.exemplo }} /#/ {{ word.frequencia }}
                 {% comment %} {% url 'atualizar_vocabulary' word.id %} {% endcomment %}
-                <a href="">Edit</a>
+                <a href="{% url 'update_vocabulary' word.id %}">Edit</a>
                 {% comment %} {% url 'deletar_vocabulary' word.id %} {% endcomment %}
-                <a href="">Delete</a>
+                <a href="{% url 'delete_vocabulary' word.id %}">Delete</a>
             </li>        
         </ul>
         {% endfor %}

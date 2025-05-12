@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vocabulário Maneiro</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
     <h1> Meu arquivo de revisão para a prova </h1>
+    <a href="{% url 'index' %}">Home</a>
     <a href="{% url 'create_vocabulary' %}">Put Down Vocabulary</a>
     <a href="{% url 'list_vocabulary' %}">List Vocabulary</a>
+
     {% block content %}
 
     {% endblock content %}

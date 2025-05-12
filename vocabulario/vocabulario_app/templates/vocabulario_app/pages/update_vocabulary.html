@@ -1,0 +1,28 @@
+{% extends "vocabulario_app/global/index.html" %}
+{% load static %}
+{% block title %}Update{% endblock title %}
+{% block content %}
+    <main id="container-update-words">
+        <h1>Vocabulary Update</h1>
+        <form action="{% url 'update_vocabulary' found.id %}" method="POST">
+            {% csrf_token %}
+            <label for="vocabulo" >Vocable</label>
+            <input type="text" name="vocabulo" value="{{found.vocabulo}}">
+            <label for="significado">Meaning</label>
+            <input type="text" name="significado" value="{{found.significado}}">
+            <label for="exemplo">Example</label>
+            <input type="text" name="exemplo" value="{{found.exemplo}}">
+            <label for="frequencia">Frequency</label>
+            <select name="frequencia">
+                <option value="" disabled {% if not found.frequencia %}selected{% endif %}>Select</option>
+                <option value="alta" {% if found.frequencia == 'alta' %}selected{% endif %}>High</option>
+                <option value="media" {% if found.frequencia == 'media' %}selected{% endif %}>Medium</option>
+                <option value="baixa" {% if found.frequencia == 'baixa' %}selected{% endif %}>Low</option>
+            </select>
+            <!-- {{ form.as_p }} -->
+            <button type="submit">Save</button>
+        </form>
+
+    </main>
+    
+{% endblock content %}

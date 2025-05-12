@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+   --background: #3D3D3D;
+   --color: #161F30;
+   --color2: #84B026;
+   --color3: #217373;
+   --color4: #173540;
+
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+    color: var(--color2);
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    margin-top: 60px;
+    text-align: center;
+   
+}
+body a{
+    text-decoration: none;
+    color: var(--color3);
+}
