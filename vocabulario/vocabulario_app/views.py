@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Word
 from django.contrib import messages
+from django.views.decorators.http import require_POST
 
 # Create your views here.
 def index(request):
@@ -27,6 +28,7 @@ def list_vocabulary(request):
     words = Word.objects.all()
     return render(request, 'vocabulario_app/pages/list_vocabulary.html', context={'words': words})
 
+# @require_POST
 def  delete_vocabulary(request,id):
     #ou: get_object_or_404
     word_found = Word.objects.get(id=id)
