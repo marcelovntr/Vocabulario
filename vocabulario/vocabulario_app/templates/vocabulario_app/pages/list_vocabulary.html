@@ -5,14 +5,20 @@
 {% block content %}
     <main id="container-word-list">
         <h1>Word List</h1>
-        <p>VOCABULO --- SIGNIFICADO --- EXEMPLO--- FREQUENCIA</p>
+        <p>VOCABULO --- SIGNIFICADO --- EXEMPLO --- FREQUENCIA --- AÇÃO</p>
         {% for word in words%}
         <ul>
             <li>{{ word.vocabulo }} /#/ {{ word.significado }} /#/ {{ word.exemplo }} /#/ {{ word.frequencia }}
-                {% comment %} {% url 'atualizar_vocabulary' word.id %} {% endcomment %}
-                <a href="{% url 'update_vocabulary' word.id %}">Edit</a>
-                {% comment %} {% url 'deletar_vocabulary' word.id %} {% endcomment %}
-                <a href="{% url 'delete_vocabulary' word.id %}">Delete</a>
+              
+                <a href="{% url 'update_vocabulary' word.id %} ">Edit</a>
+                
+                <a href="{% url 'delete_vocabulary' word.id %}" onclick="return confirm('Tem certeza que deseja deletar a palavra?')">Delete</a>
+                
+                <!-- <form action="{% url 'delete_vocabulary' word.id %}" method="POST" onsubmit="return confirm('Deseja realmente deletar?');">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form> -->
+            
             </li>        
         </ul>
         {% endfor %}
