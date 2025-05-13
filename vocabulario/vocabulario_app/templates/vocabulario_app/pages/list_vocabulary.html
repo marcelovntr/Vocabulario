@@ -6,21 +6,41 @@
     <main id="container-word-list">
         <h1>Word List</h1>
         <p>VOCABULO --- SIGNIFICADO --- EXEMPLO --- FREQUENCIA --- AÇÃO</p>
-        {% for word in words%}
+         {% for word in count%} {% comment %}#words se tirar a contagem de páginas {% endcomment %}
         <ul>
             <li>{{ word.vocabulo }} /#/ {{ word.significado }} /#/ {{ word.exemplo }} /#/ {{ word.frequencia }}
               
                 <a href="{% url 'update_vocabulary' word.id %} ">Edit</a>
                 
                 <a href="{% url 'delete_vocabulary' word.id %}" onclick="return confirm('Tem certeza que deseja deletar a palavra?')">Delete</a>
-                
                 <!-- <form action="{% url 'delete_vocabulary' word.id %}" method="POST" onsubmit="return confirm('Deseja realmente deletar?');">
                     {% csrf_token %}
                     <button type="submit">Delete</button>
                 </form> -->
-            
             </li>        
         </ul>
         {% endfor %}
+
+        <div class="pagination">
+            {% if count.has_previous %}
+                <a href="?page={{ count.previous_page_number }}">Anterior</a>
+            {% endif %}
+
+            <span>Página {{ count.number }} de {{ count.paginator.num_pages }}</span>
+
+            {% if count.has_next %}
+                <a href="?page={{ count.next_page_number }}">Próxima</a>
+            {% endif %}
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+                <ul class="messages">
+                    <li>
+                        {{message}}
+                    </li>
+                </ul>
+            {% endfor %}
+        {% endif %}
     </main>
 {% endblock content %}

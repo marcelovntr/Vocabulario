@@ -81,3 +81,16 @@ li{
     min-width: 50vw;
 
 }
+
+.messages li{
+    padding: 8px;
+    list-style: none;
+    margin: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--color5);
+    border: var(--color4) solid 2px;
+    border-radius: 6px;
+    min-width: 30vw;
+    background-color: var(--color6);
+}
